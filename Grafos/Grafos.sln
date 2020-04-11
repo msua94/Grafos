@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grafos", "Grafos\Grafos.csproj", "{6789FF10-5C48-40BB-AC86-758DBFF9E6F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{56B55516-871D-46F4-B83C-264102D13E36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{CB11852E-4FE2-4856-919B-7B74FE7C2264}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6789FF10-5C48-40BB-AC86-758DBFF9E6F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6789FF10-5C48-40BB-AC86-758DBFF9E6F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6789FF10-5C48-40BB-AC86-758DBFF9E6F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6789FF10-5C48-40BB-AC86-758DBFF9E6F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56B55516-871D-46F4-B83C-264102D13E36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56B55516-871D-46F4-B83C-264102D13E36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56B55516-871D-46F4-B83C-264102D13E36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56B55516-871D-46F4-B83C-264102D13E36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB11852E-4FE2-4856-919B-7B74FE7C2264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB11852E-4FE2-4856-919B-7B74FE7C2264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB11852E-4FE2-4856-919B-7B74FE7C2264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB11852E-4FE2-4856-919B-7B74FE7C2264}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08737C1D-CE20-4DF9-9A21-8042E2584636}
+	EndGlobalSection
+EndGlobal
