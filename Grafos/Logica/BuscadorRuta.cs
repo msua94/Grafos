@@ -12,7 +12,7 @@ namespace Logica
         private List<UnionVertice> UnionesAdyacentes = null;
         private List<Vertice> VerticesCalculados = null;        
 
-        public List<Vertice> BuscaLasRutasMenores(Vertice verticeInicial, List<UnionVertice> uniones) {
+        public List<Vertice> BuscaLasDistanciasMasCortas(Vertice verticeInicial, List<UnionVertice> uniones) {
             Uniones = uniones;
             VerticesCalculados = new List<Vertice>();
             verticeInicial.EstaEnCola = true;

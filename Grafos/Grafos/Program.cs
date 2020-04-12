@@ -28,7 +28,7 @@ namespace Grafos
 
             BuscadorRuta buscador = new BuscadorRuta();
 
-            List<Vertice> vertices = buscador.BuscaLasRutasMenores(verticeD, unionesDeVertices);
+            List<Vertice> vertices = buscador.BuscaLasDistanciasMasCortas(verticeD, unionesDeVertices);
 
             foreach (Vertice vertice in vertices) {
                 Console.WriteLine($"Vertice {vertice.Valor} : {vertice.DistanciaAcumulada}");
