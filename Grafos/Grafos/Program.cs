@@ -26,12 +26,24 @@ namespace Grafos
                 new UnionVertice(verticeE, verticeF, 6)
             };
 
-            BuscadorRuta buscador = new BuscadorRuta();
+            // probar buscador de distancias
+            BuscadorDistancias buscadorDist = new BuscadorDistancias();
 
-            List<Vertice> vertices = buscador.BuscaLasDistanciasMasCortas(verticeD, unionesDeVertices);
+            List<Distancia> distancias = buscadorDist.BuscaLasDistanciasMasCortas(verticeD, unionesDeVertices);
+            Console.WriteLine("Distancias: ");
+            foreach(Distancia distancia in distancias) {
+                Console.WriteLine(distancia.ObtieneDistanciaMasCorta());
+            }
 
-            foreach (Vertice vertice in vertices) {
-                Console.WriteLine($"Vertice {vertice.Valor} : {vertice.DistanciaAcumulada}");
+            // probar buscador de rutas
+            BuscadorRutas buscadorRutas = new BuscadorRutas();
+
+            List<Ruta> rutas = buscadorRutas.BuscaLasRutasMasCortas(verticeD, unionesDeVertices);
+            Console.WriteLine();
+            Console.WriteLine("Rutas: ");
+            foreach (Ruta ruta in rutas)
+            {
+                Console.WriteLine(ruta.ObtieneRutaMasCorta());
             }
 
             Console.ReadLine();

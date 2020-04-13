@@ -3,25 +3,23 @@ using System.Collections.Generic;
 
 namespace Logica
 {
-    public class BuscadorRuta
+    public abstract class Buscador
     {
-        private Vertice VerticeActual = null;
-        private List<Vertice> Adyacentes = null;
-        private Queue<Vertice> ColaPendientes = new Queue<Vertice>();
-        private List<UnionVertice> Uniones = null;
-        private List<UnionVertice> UnionesAdyacentes = null;
-        private List<Vertice> VerticesCalculados = null;        
+        protected string ValorVerticeInicial = null;
+        protected Vertice VerticeActual = null;
+        protected List<Vertice> Adyacentes = null;
+        protected Queue<Vertice> ColaPendientes = new Queue<Vertice>();
+        protected List<UnionVertice> Uniones = null;
+        protected List<UnionVertice> UnionesAdyacentes = null;
 
-        public List<Vertice> BuscaLasDistanciasMasCortas(Vertice verticeInicial, List<UnionVertice> uniones) {
-            Uniones = uniones;
-            VerticesCalculados = new List<Vertice>();
-            verticeInicial.EstaEnCola = true;
-            ColaPendientes.Enqueue(verticeInicial);
-            EjecutaColaDePendientes();
-            return VerticesCalculados;
+        protected void ReiniciaPropiedadesDeBusqueda(List<UnionVertice> uniones)
+        {
+            foreach (UnionVertice union in uniones) {
+                union.ReiniciaPropiedadesDeBusqueda();
+            }
         }
 
-        private void BuscaLosAdyacentes() {
+        protected void BuscaLosAdyacentes() {
 
             Adyacentes = new List<Vertice>();
             UnionesAdyacentes = new List<UnionVertice>();
@@ -39,23 +37,26 @@ namespace Logica
             }
         }
 
-        private void CalculaDistanciaDijkstra(Vertice adyacente, int distanciaEntreVertices) {
-            var nuevoAcumulado = VerticeActual.DistanciaAcumulada + distanciaEntreVertices;
+        protected void CalculaDistanciaDijkstra(Vertice adyacente, int distanciaEntreVertices) {
+            var nuevaDistancia = VerticeActual.DistanciaAcumulada + distanciaEntreVertices;
+            var nuevaRuta = VerticeActual.GeneraRutaAcumuladaTemporal(adyacente.Valor);
             if (adyacente.EsInfinito)
             {
-                adyacente.DistanciaAcumulada = nuevoAcumulado;
+                adyacente.DistanciaAcumulada = nuevaDistancia;
+                adyacente.ActualizaRutaAcumulada(nuevaRuta);
                 adyacente.EsInfinito = false;
             }
             else
             {
-                if(adyacente.DistanciaAcumulada > nuevoAcumulado)
+                if(adyacente.DistanciaAcumulada > nuevaDistancia)
                 {
-                    adyacente.DistanciaAcumulada = nuevoAcumulado;
+                    adyacente.DistanciaAcumulada = nuevaDistancia;
+                    adyacente.ActualizaRutaAcumulada(nuevaRuta);
                 }
             }
         }
 
-        private void ActualizaDistanciaDeAdyacentes()
+        protected void ActualizaVerticesAdyacentes()
         {
             foreach (Vertice adyacente in Adyacentes) {
                 foreach (UnionVertice union in UnionesAdyacentes) {
@@ -66,7 +67,7 @@ namespace Logica
             }
         }
 
-        private void AgregaLosAdyacentesEnColaPendientes()
+        protected void AgregaLosAdyacentesEnColaPendientes()
         {
             foreach(Vertice adyacente in Adyacentes)
             {   
@@ -78,7 +79,7 @@ namespace Logica
             }
         }
 
-        private Vertice ObtieneElPendienteMenor()
+        protected Vertice ObtieneElPendienteMenor()
         {
             var cantidadPendientes = ColaPendientes.Count - 1;
 
@@ -103,17 +104,6 @@ namespace Logica
             return verticeMenor;
         }
 
-        private void EjecutaColaDePendientes() {
-            if (ColaPendientes.Count > 0)
-            {
-                VerticeActual = ObtieneElPendienteMenor();
-                BuscaLosAdyacentes();
-                ActualizaDistanciaDeAdyacentes();
-                AgregaLosAdyacentesEnColaPendientes();
-                VerticeActual.YaSeUtilizo = true;
-                VerticesCalculados.Add(VerticeActual);
-                EjecutaColaDePendientes();
-            }
-        }        
+        protected abstract void EjecutaColaDePendientes();       
     }
 }

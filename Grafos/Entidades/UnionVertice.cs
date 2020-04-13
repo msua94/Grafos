@@ -44,5 +44,23 @@
             return VerticeA;
         }
 
+        public void ReiniciaPropiedadesDeBusqueda() {
+            VerticeA.DistanciaAcumulada = 0;
+            VerticeB.DistanciaAcumulada = 0;
+
+            VerticeA.EstaEnCola = false;
+            VerticeB.EstaEnCola = false;
+
+            VerticeA.YaSeUtilizo = false;
+            VerticeB.YaSeUtilizo = false;
+
+            VerticeA.EsInfinito = true;
+            VerticeB.EsInfinito = true;
+
+            VerticeA.ReiniciaRutaAcumulada();
+            VerticeB.ReiniciaRutaAcumulada();
+
+        }
+
     }
 }
